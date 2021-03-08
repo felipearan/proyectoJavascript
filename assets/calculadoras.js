@@ -1,11 +1,8 @@
 /* Fecha  */
-
-
     $("#fecha").ready(function() {
         var d = new Date()
         $("#fecha").text(d.toDateString())
     })
-
 
 /* CALCULADORA BITCOIN */
 
@@ -41,7 +38,7 @@ async function capturarDatosBtc () {
     
         textoFinal.setAttribute("class", "p")
     
-        let textoFinalCalculo = document.createTextNode("Tu cantidad de Bitcoin " + calculoBtc)
+        let textoFinalCalculo = document.createTextNode("BTC " + calculoBtc)
     
         textoFinal.appendChild(textoFinalCalculo)
     
@@ -92,7 +89,7 @@ async function capturarDatosEth() {
     
         textoFinal.setAttribute("class", "p")
     
-        let textoFinalCalculo = document.createTextNode("Tu cantidad de ETH" + calculoEth)
+        let textoFinalCalculo = document.createTextNode("ETH" + calculoEth)
     
         textoFinal.appendChild(textoFinalCalculo)
     
@@ -140,7 +137,7 @@ async function capturarDatosBch() {
     
         textoFinal.setAttribute("class", "p")
     
-        let textoFinalCalculo = document.createTextNode("Tu cantidad de BCH " + calculoBch)
+        let textoFinalCalculo = document.createTextNode("BCH " + calculoBch)
     
         textoFinal.appendChild(textoFinalCalculo)
     
@@ -195,7 +192,7 @@ async function capturarDatosLtc() {
     
         textoFinal.setAttribute("class", "p")
     
-        let textoFinalCalculo = document.createTextNode("Tu cantidad de Litecoin " + calculoLtc)
+        let textoFinalCalculo = document.createTextNode("LTC " + calculoLtc)
     
         textoFinal.appendChild(textoFinalCalculo)
     
