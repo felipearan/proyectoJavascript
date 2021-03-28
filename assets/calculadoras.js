@@ -1,19 +1,15 @@
-/* Fecha  */
-    $("#fecha").ready(function() {
-        var d = new Date()
-        $("#fecha").text(d.toDateString())
-    })
+
 
 /* CALCULADORA BITCOIN */
 
 async function capturarDatosBtc () {
 
     //Obtener los datos de los inputs
-        let montoClpbtc = parseInt(document.getElementById("montoClpbtc").value)
-        console.log(montoClpbtc)
+        var montoClp = parseInt(document.getElementById("montoClpbtc").value)
+        
         
         let precioBtc = parseInt(document.getElementById("precioBtc").value)
-        console.log(precioBtc)
+        
     
         let valorBtc = document.getElementById("listadoBtc").value;
         if (valorBtc === "1"){
@@ -21,12 +17,16 @@ async function capturarDatosBtc () {
         } else if (valorBtc === "2"){
             valorBtc = 0.0025
         }
-        console.log(valorBtc)
+        
     
-        let calculoBtc = ((montoClpbtc / precioBtc) * (1 - valorBtc))
-        console.log(calculoBtc)
+        let calculoBtc = ((montoClp / precioBtc) * (1 - valorBtc))
+        
         return calculoBtc
         
+    }
+    async function montoInvertidoBitcoin() {
+        var montoClp = parseInt(document.getElementById("montoClpbtc").value)
+       return montoClp
     }
     
     // crear nodo
@@ -38,48 +38,64 @@ async function capturarDatosBtc () {
     
         textoFinal.setAttribute("class", "p")
     
-        let textoFinalCalculo = document.createTextNode("BTC " + calculoBtc)
+        let textoFinalCalculo = document.createTextNode(calculoBtc)
     
         textoFinal.appendChild(textoFinalCalculo)
     
         document.getElementById("resultadoFinalBtc").appendChild(textoFinal)
     
         textoFinal.setAttribute("id", "txtFinalCalculo")
-    
-        localStorage.setItem('inversion',calculoBtc)
         
-    } 
-    
+
+        let montoInvertidoBTC = await montoInvertidoBitcoin() 
+
+        let capitalInvertido = document.createElement("p") 
+
+        capitalInvertido.setAttribute("class", "p")
+
+        let capitalInvertidoBTC = document.createTextNode(montoInvertidoBTC)
+        
+        capitalInvertido.appendChild(capitalInvertidoBTC)
+
+        document.getElementById("capitalInvertidoBitcoin").appendChild(capitalInvertido)
+
+        capitalInvertido.setAttribute("id", "capitalInvertidoFinalBitcoin")
+        
+}
+
+
+
     /* CALCULADORA ETHEREUM */
 
 
 async function capturarDatosEth() {
 
     //Obtener los datos de los inputs
-        let montoClp = parseInt(document.getElementById("montoClp").value)
-        console.log(montoClp)
+        var montoClp = parseInt(document.getElementById("montoClpEth").value)
+        
         
         let precioEth = parseInt(document.getElementById("precioEth").value)
-        console.log(precioEth)
+        
     
-        let valor = document.getElementById("listado").value;
+        let valor = document.getElementById("listadoEth").value;
         if (valor === "1"){
             valor = 0.006 
         } else if (valor === "2"){
             valor = 0.0025
         }
-        console.log(valor)
+        
     
         let calculoEth = ((montoClp / precioEth) * (1 - valor))
-        console.log(calculoEth)
+       
         return calculoEth
         
     } 
-
-    /* 
-        let textoPrincipal = document.getElementById("textoPrincipal")
-        document.getElementById("imgPrincipal").removeChild(textoPrincipal)  */
+    async function montoInvertido() {
+        var montoClp = parseInt(document.getElementById("montoClpEth").value)
+       return montoClp
+    }
     
+
     // crear nodo
        async function crearNodosEth (){
     
@@ -89,17 +105,33 @@ async function capturarDatosEth() {
     
         textoFinal.setAttribute("class", "p")
     
-        let textoFinalCalculo = document.createTextNode("ETH" + calculoEth)
+        let textoFinalCalculo = document.createTextNode(calculoEth)
     
         textoFinal.appendChild(textoFinalCalculo)
     
         document.getElementById("resultadoFinalEth").appendChild(textoFinal)
     
         textoFinal.setAttribute("id", "txtFinalCalculo")
+
+
+        let montoInvertidoEth = await montoInvertido() 
+
+        let capitalInvertido = document.createElement("p") 
     
-        localStorage.setItem('inversion',calculoEth)
+        capitalInvertido.setAttribute("class", "p")
+
+        let capitalInvertidoETH = document.createTextNode(montoInvertidoEth)
         
-    }  
+        capitalInvertido.appendChild(capitalInvertidoETH)
+
+        document.getElementById("capitalInvertidoEthereum").appendChild(capitalInvertido)
+
+        capitalInvertido.setAttribute("id", "capitalInvertidoFinalEth")
+    
+        /* localStorage.setItem('inversion',montoClp) */
+ 
+        }
+  
     
     /* CALCULADORA BITCOIN CASH */
 
@@ -107,11 +139,11 @@ async function capturarDatosEth() {
 async function capturarDatosBch() {
 
     //Obtener los datos de los inputs
-        let montoClpBch = parseInt(document.getElementById("montoClpBch").value)
-        console.log(montoClp)
+        var montoClpBch = parseInt(document.getElementById("montoClpBch").value)
+        
         
         let precioBch = parseInt(document.getElementById("precioBch").value)
-        console.log(precioEth)
+        
     
         let valorBch = document.getElementById("listadoBch").value;
         if (valorBch === "1"){
@@ -119,14 +151,16 @@ async function capturarDatosBch() {
         } else if (valorBch === "2"){
             valorBch = 0.0025
         }
-        console.log(valorBch)
+        
     
         let calculoBch = ((montoClpBch / precioBch) * (1 - valorBch))
-        console.log(calculoBch)
-        return calculoBch
         
+        return calculoBch
     }
-    
+    async function montoInvertidoBitcoincash() {
+        var montoClpBch = parseInt(document.getElementById("montoClpBch").value)
+       return montoClpBch
+    }
     
     // crear nodo
         async function crearNodosBch (){
@@ -137,7 +171,7 @@ async function capturarDatosBch() {
     
         textoFinal.setAttribute("class", "p")
     
-        let textoFinalCalculo = document.createTextNode("BCH " + calculoBch)
+        let textoFinalCalculo = document.createTextNode(calculoBch)
     
         textoFinal.appendChild(textoFinalCalculo)
     
@@ -146,24 +180,35 @@ async function capturarDatosBch() {
         textoFinal.setAttribute("id", "txtFinalCalculo")
     
         localStorage.setItem('inversion',calculoBch)
+
+
+
+        let montoInvertidoBCH = await montoInvertidoBitcoincash() 
+
+        let capitalInvertido = document.createElement("p") 
+
+        capitalInvertido.setAttribute("class", "p")
+
+        let capitalInvertidoBCH = document.createTextNode(montoInvertidoBCH)
+        
+        capitalInvertido.appendChild(capitalInvertidoBCH)
+
+        document.getElementById("capitalInvertidoBitcoincash").appendChild(capitalInvertido)
+
+        capitalInvertido.setAttribute("id", "capitalInvertidoFinalBitcoincash")
         
     } 
     
     /* CALCULADORA LITECOIN */
-    
-    /* document.getElementById("calculoFinalLtc").addEventListener("click", crearNodosLtc, {once:true}) */
-/* document.getElementById("calculoFinal").addEventListener("mouseover", pintar)
-document.getElementById("calculoFinal").addEventListener("mouseout", pintar) */
-
 
 async function capturarDatosLtc() {
 
     //Obtener los datos de los inputs
-        let montoClpLtc = parseInt(document.getElementById("montoClpLtc").value)
-        console.log(montoClpLtc)
+        var montoClpLtc = parseInt(document.getElementById("montoClpLtc").value)
+        
         
         let precioLtc = parseInt(document.getElementById("precioLtc").value)
-        console.log(precioLtc)
+        
     
         let valorLtc = document.getElementById("listadoLtc").value;
         if (valorLtc === "1"){
@@ -171,17 +216,18 @@ async function capturarDatosLtc() {
         } else if (valorLtc === "2"){
             valorLtc = 0.0025
         }
-        console.log(valorLtc)
+        
     
         let calculoLtc = ((montoClpLtc / precioLtc) * (1 - valorLtc))
-        console.log(calculoLtc)
-        return calculoLtc
         
+        return calculoLtc 
+    }
+
+    async function montoInvertidoLitecoin() {
+        var montoClpLtc = parseInt(document.getElementById("montoClpLtc").value)
+       return montoClpLtc
     }
     
-    /* 
-        let textoPrincipal = document.getElementById("textoPrincipal")
-        document.getElementById("imgPrincipal").removeChild(textoPrincipal)  */
     
     // crear nodo
         async function crearNodosLtc (){
@@ -192,7 +238,7 @@ async function capturarDatosLtc() {
     
         textoFinal.setAttribute("class", "p")
     
-        let textoFinalCalculo = document.createTextNode("LTC " + calculoLtc)
+        let textoFinalCalculo = document.createTextNode(calculoLtc)
     
         textoFinal.appendChild(textoFinalCalculo)
     
@@ -200,7 +246,21 @@ async function capturarDatosLtc() {
     
         textoFinal.setAttribute("id", "txtFinalCalculo")
     
-        localStorage.setItem('inversion',calculoLtc)
+        /* localStorage.setItem('inversion',calculoLtc) */
+
+        let montoInvertidoLTC = await montoInvertidoLitecoin() 
+
+        let capitalInvertido = document.createElement("p") 
+
+        capitalInvertido.setAttribute("class", "p")
+
+        let capitalInvertidoLTC = document.createTextNode(montoInvertidoLTC)
+        
+        capitalInvertido.appendChild(capitalInvertidoLTC)
+
+        document.getElementById("capitalInvertidoLitecoin").appendChild(capitalInvertido)
+
+        capitalInvertido.setAttribute("id", "capitalInvertidoFinalLitecoin")
         
     } 
     
